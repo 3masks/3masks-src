@@ -1,0 +1,45 @@
+@import ./config
+
+@import ./stripes/index
+
+@import ./teacher
+@import ./program
+
+html, body
+    margin: 0
+    font-family: Roboto, sans-serif
+    font-size: 14px
+
+*
+    font-size: 1em
+    font-weight: normal
+    font-style: normal
+    text-transform: none
+    text-decoration: none
+    color: inherit
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+* + p
+    margin-top: 10px
+
+.b, b
+    font-weight: bold
+
+html
+    color: white
+    height: 100%
+    background: url(~images/bg.jpg) center 40% no-repeat
+    background-attachment: fixed
+    background-size: cover
+
+body
+    padding: 10px
+    @media (min-width: 768px)
+        padding: 20px
+
+.center
+    width: 100%
+    max-width: 960px
+    margin: auto
