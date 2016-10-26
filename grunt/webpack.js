@@ -34,6 +34,12 @@ const config = ({
                     ]
                 },
                 {
+                    test: /fonts/,
+                    loaders: [
+                        'file?name=f/[hash:4].[ext]'
+                    ]
+                },
+                {
                     test: /teachers\.js$/,
                     loader: teachersETP.extract(
                         'babel'
