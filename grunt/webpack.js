@@ -8,7 +8,7 @@ const config = ({
     plugins = []
 }) => {
     const cssETP = new ExtractTextPlugin('c.css');
-    const teachersETP = new ExtractTextPlugin('teachers.json');
+    const htmlETP = new ExtractTextPlugin('index.html');
     return {
         context: path.resolve(__dirname, '../src'),
         entry: './index.js',
@@ -40,10 +40,8 @@ const config = ({
                     ]
                 },
                 {
-                    test: /teachers\.js$/,
-                    loader: teachersETP.extract(
-                        'babel'
-                    )
+                    test: /html\.js$/,
+                    loader: htmlETP.extract([], [])
                 },
                 {
                     test: /\.pug$/,
@@ -56,7 +54,7 @@ const config = ({
         },
         plugins: [
             cssETP,
-            teachersETP,
+            htmlETP,
             ...plugins
         ],
         postcss: [autoprefixer()],

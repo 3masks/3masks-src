@@ -2,5 +2,9 @@
     .teachers
         h2.teachers__title Преподаватели
         .teachers__items
-            each teacher in teachers
-                .teachers__item!=teacher
+            .teachers__item
+                include ../teacher-1
+            .teachers__item
+                include ../teacher-2
+            .teachers__item
+                include ../teacher-3

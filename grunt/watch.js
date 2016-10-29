@@ -3,10 +3,9 @@ module.exports = {
         livereload: true,
     },
     html: {
-        files: ['src/pug/**/*.pug', 'docs/*.json'],
-        tasks: 'pug'
+        files: 'docs/*.html'
     },
     css: {
-        files: 'docs/**/*.css'
+        files: 'docs/*.css'
     }
 };

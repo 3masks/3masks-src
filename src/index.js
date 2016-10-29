@@ -1,2 +1,2 @@
 require('./sass/main.sass');
-require('./teachers');
+console.log(require('./html'));
