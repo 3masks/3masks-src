@@ -17,17 +17,24 @@
 
     &--kids
         background-image: url(~images/kids.png)
+        @media (min-width: 768px)
+            .kids-p1
+                width: 95%
+            .kids-p2
+                width: 87%
 
     &__text
         padding: 20px
-        max-width: 340px
+        max-width: 360px
         min-height: 50vh
         margin-left: auto
+        background: rgba(black, .5)
 
     &--even &__text
         margin-left: 0
-    &--even &__text
-        background: linear-gradient(to right, rgba(black, .5) 0%, rgba(black, .2) 80%, transparent 100%)
+    @media (min-width: 768px)
+        &--even &__text
+            background: linear-gradient(to right, rgba(black, .5) 0%, rgba(black, .2) 80%, transparent 100%)
 
-    &--odd &__text
-        background: linear-gradient(to left, rgba(black, .5) 0%, rgba(black, .2) 80%, transparent 100%)
+        &--odd &__text
+            background: linear-gradient(to left, rgba(black, .5) 0%, rgba(black, .2) 80%, transparent 100%)
