@@ -16,7 +16,7 @@ document
         if (formIsOpen) {
             return;
         }
-        xhr('/__form__', (err, resp, body) => {
+        xhr('/bid-form/index.html', (err, resp, body) => {
             if (err) {
                 return;
             }

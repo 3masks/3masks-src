@@ -29,7 +29,7 @@ const config = ({
         ['campaign/index.html', 'campaign'],
         ['price/index.html', 'price'],
         ['contacts/index.html', 'contacts'],
-        ['__form__/index.html', 'form']
+        ['bid-form/index.html', 'form']
     ].map(([target, src]) => page(target, src));
     return {
         context: path.resolve(__dirname, '../src'),
@@ -65,6 +65,13 @@ const config = ({
                 {
                     test: /\.pug$/,
                     loader: 'pug'
+                },
+                {
+                    test: /\.js$/,
+                    loader: 'babel',
+                    query: {
+                        presets: ['es2015']
+                    }
                 }
             ]
         },
