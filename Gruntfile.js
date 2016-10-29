@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'clean',
-        'concurrent:dev'
+        'webpack:main'
     ]);
 
     grunt.registerTask('build', [

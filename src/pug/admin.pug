@@ -1,0 +1,22 @@
+extends layout
+
+block main
+    .bids
+        .bids__item
+            .bid
+                .bid__field.bid__field--created Дата  
+                .bid__field.bid__field--name Имя
+                .bid__field.bid__field--age Возраст
+                .bid__field.bid__field--phone Телефон
+                .bid__field.bid__field--program Программа
+        each bid in bids
+            .bids__item
+                .bid
+                    - var date = new Date(bid.created);
+                    - var timeStr = [date.getHours(), date.getMinutes()].join(':')
+                    - var dateStr = [date.getFullYear(), date.getDate(), (date.getMonth() + 1)].join('.')
+                    .bid__field.bid__field--created= timeStr + ' ' + dateStr  
+                    .bid__field.bid__field--name=bid.name
+                    .bid__field.bid__field--age=bid.age
+                    .bid__field.bid__field--phone=bid.phone
+                    .bid__field.bid__field--program=bid.program
