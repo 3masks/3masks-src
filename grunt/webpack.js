@@ -3,12 +3,27 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
+
+const page = (target, src) => {
+    const plugin = new ExtractTextPlugin(target);
+
+    return {
+        plugin,
+        moduleLoader: {
+            test: new RegExp(src + '\\.js$'),
+            loader: plugin.extract([], [])
+        }
+    }
+};
+
 const config = ({
     watch, keepalive,
     plugins = []
 }) => {
     const cssETP = new ExtractTextPlugin('c.css');
-    const htmlETP = new ExtractTextPlugin('index.html');
+    const pages = [
+        ['index.html', 'pages/index']
+    ].map(([target, src]) => page(target, src));
     return {
         context: path.resolve(__dirname, '../src'),
         entry: './index.js',
@@ -39,10 +54,7 @@ const config = ({
                         'file?name=f/[hash:4].[ext]'
                     ]
                 },
-                {
-                    test: /html\.js$/,
-                    loader: htmlETP.extract([], [])
-                },
+                ...pages.map(page => page.moduleLoader),
                 {
                     test: /\.pug$/,
                     loader: 'pug'
@@ -54,7 +66,7 @@ const config = ({
         },
         plugins: [
             cssETP,
-            htmlETP,
+            ...pages.map(page => page.plugin),
             ...plugins
         ],
         postcss: [autoprefixer()],
