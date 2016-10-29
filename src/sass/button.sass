@@ -1,0 +1,34 @@
+.button
+    cursor: pointer
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    color: white
+
+    min-width: 85px
+    height: 35px
+    padding: 5px 10px
+    white-space: nowrap
+
+    @media (min-width: 768px)
+        min-width: 122px
+        height: 50px
+    background: url(~images/menu-normal.png) center center no-repeat
+    background-size: 100% 100%
+
+    &:hover, &:before
+        background-image: url(~images/menu-hover.png)
+    &:active, &:after
+        background-image: url(~images/menu-active.png)
+
+    &--yellow 
+        background-image: url(~images/menu-active.png)
+        &:hover, &:before
+            background-image: url(~images/menu-normal.png)
+        &:active, &:after
+            background-image: url(~images/menu-hover.png)
+
+    &:before, &:after
+        content: ''
+        position: absolute
+        visibility: hidden

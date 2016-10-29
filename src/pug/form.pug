@@ -1,0 +1,21 @@
+.form
+    h2.form__title Отправить заявку
+    form
+        label.form__field
+            .form__field-label Имя
+            input.form__field-input(name="name")
+        label.form__field
+            .form__field-label Телефон
+            input.form__field-input(name="phone" type="tel")
+        label.form__field
+            .form__field-label Возраст ученика
+            input.form__field-input(name="phone" type="tel")
+        label.form__field
+            .form__field-label Интересующий курс
+            select.form__field-input(name="phone" type="tel")
+                option(value="Актерское мастерство") Актерское мастерство
+                option(value="Импровизация") Импровизация
+                option(value="Кинотехнологии") Кинотехнологии
+                option(value="Детские театральные уроки") Детские театральные уроки
+    .form__send.button
+        span Отправить

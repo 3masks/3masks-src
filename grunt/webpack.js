@@ -28,7 +28,8 @@ const config = ({
         ['photo/index.html', 'photo'],
         ['campaign/index.html', 'campaign'],
         ['price/index.html', 'price'],
-        ['contacts/index.html', 'contacts']
+        ['contacts/index.html', 'contacts'],
+        ['__form__/index.html', 'form']
     ].map(([target, src]) => page(target, src));
     return {
         context: path.resolve(__dirname, '../src'),

@@ -1,5 +1,5 @@
-mixin menu-item(name, url)
-    a(href=url).menu__item
+mixin menu-item(name, url, mod)
+    a(href=url class=mod).menu__item.button
         .menu__item-content=name
 
 .menu
@@ -9,3 +9,4 @@ mixin menu-item(name, url)
     +menu-item('Видео', '/video')
     +menu-item('Цены', '/price')
     +menu-item('Контакты', '/contacts')
+    +menu-item('Отправить заявку', '#bid', 'button--yellow show-form-button')

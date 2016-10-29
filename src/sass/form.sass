@@ -1,0 +1,30 @@
+.form
+    color: black
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translateY(-1000px) translate(-50%, -50%)
+
+    background: rgba(white, .9)
+    box-shadow: 0 0 10px 0 black
+    border-radius: 15px
+    padding: 20px
+
+    transition: .4s
+    &--is-open
+        transform: translateY(0px) translate(-50%, -50%)
+
+    &__field-input
+        width: 100%
+        border: 0
+        outline: 0
+        background: rgba(white, .5)
+        border-bottom: 1px solid rgba(black, .1)
+        padding: 5px
+
+    &__title
+        font-size: 2em
+
+    &__send
+        margin-top: 10px
+        margin-left: auto
