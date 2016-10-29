@@ -20,11 +20,14 @@
 
     &__text
         padding: 20px
-        max-width: 360px
+        max-width: 340px
         min-height: 50vh
         margin-left: auto
-        background: rgba(black, .5)
 
-    &--kids &__text,
-    &--improvisation &__text
+    &--even &__text
         margin-left: 0
+    &--even &__text
+        background: linear-gradient(to right, rgba(black, .5) 0%, rgba(black, .2) 80%, transparent 100%)
+
+    &--odd &__text
+        background: linear-gradient(to left, rgba(black, .5) 0%, rgba(black, .2) 80%, transparent 100%)
