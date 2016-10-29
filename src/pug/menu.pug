@@ -1,0 +1,11 @@
+mixin menu-item(name, url)
+    a(href=url).menu__item
+        .menu__item-content=name
+
+.menu
+    +menu-item('О нас', '/#about')
+    +menu-item('Акции', '/campaign')
+    +menu-item('Фото', '/photo')
+    +menu-item('Видео', '/video')
+    +menu-item('Цены', '/price')
+    +menu-item('Контакты', '/contacts')

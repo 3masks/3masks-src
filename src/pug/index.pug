@@ -1,13 +1,7 @@
-doctype html
-html
-    head
-        title Три Маски
-        meta(name="viewport" content="width=device-width")
-        link(rel="stylesheet" href="/c.css")
-        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond&amp;subset=cyrillic")
-    body
-        include stripes/header
-        .center
-            include stripes/about
-            include stripes/programs
-            include stripes/teachers
+extends layout
+block main
+    include stripes/header
+    .center
+        include stripes/about
+        include stripes/programs
+        include stripes/teachers

@@ -11,6 +11,7 @@ const page = (target, src) => {
         plugin,
         moduleLoader: {
             test: new RegExp(src + '\\.js$'),
+            include: /pages/,
             loader: plugin.extract([], [])
         }
     }
@@ -22,7 +23,12 @@ const config = ({
 }) => {
     const cssETP = new ExtractTextPlugin('c.css');
     const pages = [
-        ['index.html', 'pages/index']
+        ['index.html', 'index'],
+        ['video/index.html', 'video'],
+        ['photo/index.html', 'photo'],
+        ['campaign/index.html', 'campaign'],
+        ['price/index.html', 'price'],
+        ['contacts/index.html', 'contacts']
     ].map(([target, src]) => page(target, src));
     return {
         context: path.resolve(__dirname, '../src'),
