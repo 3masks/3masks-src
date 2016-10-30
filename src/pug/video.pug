@@ -2,4 +2,9 @@ extends layout
 block main
     include menu
     .center
-        p Видео
+        .stripe.stripe--videos
+            h2 Видео
+            .videos
+                each video in videos
+                    .videos__item
+                        .video!=video
