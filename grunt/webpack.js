@@ -25,7 +25,6 @@ const config = ({
     const pages = [
         ['index.html', 'index'],
         ['video/index.html', 'video'],
-        ['photo/index.html', 'photo'],
         ['campaign/index.html', 'campaign'],
         ['price/index.html', 'price'],
         ['contacts/index.html', 'contacts'],

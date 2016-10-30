@@ -4,13 +4,13 @@ const path = require('path');
 const glob = require('glob');
 const promisify = require('es6-promisify');
 
-module.exports = {saveBid, getBids};
+module.exports = {saveBid, getBids, registerFile, getFiles};
 
 function saveBid(bidData) {
     const now = new Date();
     const formatted = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
 
-    const dir = path.join(__dirname, '..', 'data', 'bids', formatted);
+    const dir = path.join(__dirname, '..', '..', 'data', 'bids', formatted);
     const fileName = now.valueOf() + '-' + ((Math.random() * 89 + 10) | 0) + '.json';
 
     const fullName = path.join(dir, fileName);
@@ -34,7 +34,7 @@ function saveBid(bidData) {
 }
 
 function getBids() {
-    const dir = path.join(__dirname, '..', 'data', 'bids');
+    const dir = path.join(__dirname, '..', '..', 'data', 'bids');
     return new Promise((resolve, reject) => {
         glob('**/*.json', {cwd: dir}, (err, files) => {
             if (err) {
@@ -50,4 +50,19 @@ function getBids() {
                 ).then(resolve, reject);
         });
     });
+}
+
+const uploadsConfigFileName = path.join(__dirname, '..', '..', 'data', 'uploads.json');
+function registerFile(names) {
+    return promisify(fs.readFile)(uploadsConfigFileName, 'utf8')
+        .then(JSON.parse)
+        .then((uploadsConfig) => {
+            uploadsConfig[names.original] = names;
+            return promisify(fs.writeFile)(uploadsConfigFileName, JSON.stringify(uploadsConfig));
+        });
+}
+
+function getFiles() {
+    return promisify(fs.readFile)(uploadsConfigFileName, 'utf8')
+        .then(JSON.parse);
 }

@@ -1,5 +1,9 @@
 extends layout
 block main
     include menu
-    .center
-        p Фото
+    .stripe.stripe--photo.center
+        h2 Фото
+        .album
+            each photo in photos
+                .album__item
+                    .album__item-image(style=`background-image: url(/p/i/${photo.small})`)

@@ -20,3 +20,9 @@ block main
                     .bid__field.bid__field--age=bid.age
                     .bid__field.bid__field--phone=bid.phone
                     .bid__field.bid__field--program=bid.program
+    .files
+        form(action="/upload" method="POST" enctype="multipart/form-data")
+            input(type="file" name="file")
+            button.files__button(type="submit") Загрузить
+        each file in files
+            img.files__item(src='/p/i' + file.small)
