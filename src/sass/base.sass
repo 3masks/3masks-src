@@ -1,0 +1,42 @@
+html, body
+    margin: 0
+    font-family: 'EB Garamond', sans-serif
+    font-size: 16px
+    line-height: (18/16)
+    @media (min-width: 768px)
+        font-size: 18px
+        line-height: (21/18)
+
+*
+    font-size: 1em
+    font-weight: normal
+    font-style: normal
+    text-transform: none
+    text-decoration: none
+    color: inherit
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+* + p
+    margin-top: 10px
+
+.b, b
+    font-weight: bold
+
+html
+    color: white
+    height: 100%
+    background: url(~images/bg.jpg) center 40% no-repeat
+    background-attachment: fixed
+    background-size: cover
+
+body
+    position: relative
+    min-height: 100vh
+    padding-bottom: $footer-height
+
+.center
+    width: 100%
+    max-width: 960px
+    margin: auto
