@@ -1,0 +1,10 @@
+{
+  "apps" : [{
+    "name"      : "3masks",
+    "cwd"       : "/var/www/3masks/current",
+    "script"    : "server/index.js",
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }]
+}
