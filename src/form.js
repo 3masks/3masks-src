@@ -28,6 +28,22 @@ function attachForm(code) {
 function initForm() {
     const root = document.querySelector('.form');
     const button = document.querySelector('.form__send');
+    const close = root.querySelector('.form__close');
+
+    const closeForm = () => {
+        root.classList.remove('form--is-open');
+        document.removeEventListener('click', closeForm);
+        setTimeout(() => {
+            root.parentNode.removeChild(root);
+            formIsOpen = false;
+        }, 500);
+    };
+
+    root.addEventListener('click', (e) => {e.stopPropagation();});
+
+    document.addEventListener('click', closeForm);
+
+    close.addEventListener('click', closeForm);
 
     setTimeout(() => {
         root.classList.add('form--is-open');
@@ -36,7 +52,6 @@ function initForm() {
     formIsOpen = true;
 
     button.addEventListener('click', () => {
-        root.classList.remove('form--is-open');
         xhr.post('/bid', {
             json: {
                 name: root.querySelector('input[name=name]').value,
@@ -44,9 +59,6 @@ function initForm() {
                 age: root.querySelector('input[name=age]').value,
                 program: root.querySelector('select[name=program]').value
             }
-        }, () => {
-            root.parentNode.removeChild(root);
-            formIsOpen = false;
-        }, 500);
+        }, closeForm, 500);
     });
 }

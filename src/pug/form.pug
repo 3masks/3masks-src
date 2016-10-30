@@ -1,16 +1,21 @@
 .form
+    .form__close
+        svg
+            line(x1=0 y1=0 x2='100%' y2='100%')
+            line(x1=0 y1='100%' x2='100%' y2=0)
+
     h2.form__title Отправить заявку
     form
-        label.form__field
+        .form__field
             .form__field-label Имя
             input.form__field-input(name="name")
-        label.form__field
+        .form__field
             .form__field-label Телефон
             input.form__field-input(name="phone" type="tel")
-        label.form__field
+        .form__field
             .form__field-label Возраст ученика
             input.form__field-input(name="age" type="tel")
-        label.form__field
+        .form__field
             .form__field-label Интересующий курс
             select.form__field-input(name="program")
                 option(value="Актерское мастерство") Актерское мастерство
