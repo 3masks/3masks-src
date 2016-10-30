@@ -1,28 +1,26 @@
-.album
-    text-align: center
-    &__item
+.page-photos
+    height: 100vh
+    min-height: 670px
+    display: flex
+    flex-direction: column
+
+    .menu
+        flex: .01
+    
+    .center
+        flex: 1
         position: relative
-        display: inline-block
 
-        width: 45%
-        @media (min-width: 768px)
-            width: 20%
-           
-        &:after
-            content: ''
-            display: block
-            padding-bottom: percentage(10/16)
+    .stripe
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
 
-        &-image
-            position: absolute
-            left: 3px
-            right: 3px
-            top: 3px
-            bottom: 3px
-            @media (min-width: 768px)
-                left: 10px
-                right: 10px
-                top: 10px
-                bottom: 10px
-            background: center 10% no-repeat
-            background-size: cover
+    .fotorama
+        position: absolute
+        left: 20px
+        right: 20px
+        top: 66px
+        bottom: 0
