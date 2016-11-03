@@ -42,7 +42,7 @@ module.exports = function (shipit) {
         shipit.local('grunt build'));
     
     shipit.blTask('copyDocs', () =>
-        shipit.remoteCopy(local('docs'), `${shipit.currentPath}/docs`));
+        shipit.remoteCopy(local('docs'), `${shipit.currentPath}`));
 
     shipit.blTask('npmInstall', () =>
         shipit.remote(`cd ${shipit.currentPath} && npm i`));
