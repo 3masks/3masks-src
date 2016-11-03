@@ -53,6 +53,17 @@ function getBids() {
 }
 
 const uploadsConfigFileName = path.join(__dirname, '..', '..', 'data', 'uploads.json');
+
+fs.stats(uploadsConfigFileName, (err, stats) => {
+    if (err) {
+        if (err.code === "ENOENT") {
+            fs.writeFile(uploadsConfigFileName);
+        } else {
+            console.log(err);
+        }
+    }
+})
+
 function registerFile(names) {
     return promisify(fs.readFile)(uploadsConfigFileName, 'utf8')
         .then(JSON.parse)

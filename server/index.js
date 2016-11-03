@@ -31,7 +31,10 @@ app.get('/admin', (req, res) => {
         getFiles()
     ]).then(
         ([bids, files]) => res.render('admin', {bids, files}),
-        (err) => res.send('Ой. Что-то пошло не так')
+        (err) => {
+            console.log(err);
+            res.send('Ой. Что-то пошло не так');
+        }
     );
 });
 
