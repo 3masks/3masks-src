@@ -9,7 +9,7 @@ module.exports = function (shipit) {
     shipit.initConfig({
         default: {
             workspace: local('tmp'),
-            deployTo: '/var/www/3masks',
+            deployTo: '/var/www/3masks-deploy',
             repositoryUrl: 'git@github.com:3masks/3masks-src.git',
             branch: 'master',
             ignores: ['.git', 'node_modules'],
@@ -47,5 +47,6 @@ module.exports = function (shipit) {
         shipit.remote(`cd ${shipit.currentPath} && npm i`));
 
     shipit.blTask('startServer', () =>
-        shipit.remote(`cd ${shipit.currentPath} && NODE_ENV=production pm2 startOrRestart ${shipit.currentPath}/deploy/pm2.json`));
+        //shipit.remote(`cd ${shipit.currentPath} && NODE_ENV=production pm2 startOrRestart ${shipit.currentPath}/deploy/pm2.json`));
+          shipit.remote(`cd ${shipit.currentPath} && pwd`));
 };
