@@ -57,7 +57,10 @@ const uploadsConfigFileName = path.join(__dirname, '..', '..', 'data', 'uploads.
 fs.stat(uploadsConfigFileName, (err, stats) => {
     if (err) {
         if (err.code === "ENOENT") {
-            fs.writeFile(uploadsConfigFileName);
+            promisify(mkdirp)(path.dirname(uploadsConfigFileName))
+                .then(() => {
+                    fs.writeFile(uploadsConfigFileName, () => {});
+                })
         } else {
             console.log(err);
         }
