@@ -15,7 +15,7 @@ module.exports = function (shipit) {
             ignores: ['.git', 'node_modules'],
             keepReleases: 2,
             deleteOnRollback: false,
-            key: '~/.ssh/id_rsa_x3_masks',
+            key: '~/.ssh/id_rsa',
             shallowClone: true,
             shared: {
                 overwrite: true,
