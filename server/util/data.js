@@ -59,7 +59,7 @@ fs.stat(uploadsConfigFileName, (err, stats) => {
         if (err.code === "ENOENT") {
             promisify(mkdirp)(path.dirname(uploadsConfigFileName))
                 .then(() => {
-                    fs.writeFile(uploadsConfigFileName, () => {});
+                    fs.writeFile(uploadsConfigFileName, '{}', () => {});
                 })
         } else {
             console.log(err);
