@@ -34,14 +34,15 @@ module.exports = function (shipit) {
 
     shipit.on('deployed', () => {
         shipit.start('npmInstall');
+        shipit.start('copyDocs');
         shipit.start('startServer');
     });
 
     shipit.blTask('docs', () => 
-        shipit.local('grunt build')
-              .then(() =>
-                shipit.remoteCopy(local('docs'), `${shipit.currentPath}/docs`)
-              ));
+        shipit.local('grunt build'));
+    
+    shipit.blTask('copyDocs', () =>
+        shipit.remoteCopy(local('docs'), `${shipit.currentPath}/docs`));
 
     shipit.blTask('npmInstall', () =>
         shipit.remote(`cd ${shipit.currentPath} && npm i`));
