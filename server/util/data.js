@@ -54,7 +54,7 @@ function getBids() {
 
 const uploadsConfigFileName = path.join(__dirname, '..', '..', 'data', 'uploads.json');
 
-fs.stats(uploadsConfigFileName, (err, stats) => {
+fs.stat(uploadsConfigFileName, (err, stats) => {
     if (err) {
         if (err.code === "ENOENT") {
             fs.writeFile(uploadsConfigFileName);
