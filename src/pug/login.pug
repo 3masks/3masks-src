@@ -1,0 +1,9 @@
+extend layout
+
+block main
+    .stripe-pusher
+    .stripe.stripe--login.center
+        p Для доступа в панель управления нужно указать пароль
+        form(method="POST")
+            input(type="password" name="password" placeholder='Введите пароль')
+            button.button(type='submit') Вход

@@ -3,20 +3,34 @@ const fs = require('fs');
 const app = express();
 const path = require('path');
 const Busboy = require('busboy');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 
 const processImage = require('./util/images');
 const {saveBid, getBids, registerFile, getFiles} = require('./util/data');
+const {forLoggedInOnly, logIn} = require('./auth');
+const {SESSION_SECRET} = require('./config'); 
 
 const bodyParser = require('body-parser');
-
 const PORT = process.env.NODE_ENV === 'production' ? 80 : 8000;
 
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 
 app.set('views', path.join(__dirname, '..', 'src', 'pug'));
 
+app.use(session({
+    store: new FileStore({
+        path: path.join(__dirname, '..', 'data', 'sessions')
+    }),
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.post('/bid', (req, res) => {
     saveBid(req.body).then(
@@ -25,7 +39,7 @@ app.post('/bid', (req, res) => {
     );
 });
 
-app.get('/admin', (req, res) => {
+app.get('/admin', forLoggedInOnly, (req, res) => {
     Promise.all([
         getBids(),
         getFiles()
@@ -38,8 +52,14 @@ app.get('/admin', (req, res) => {
     );
 });
 
+app.get('/login', (req, res) => {
+    res.render('login');
+});
 
-app.post('/upload', (req, res) => {
+app.post('/login', logIn);
+
+
+app.post('/upload', forLoggedInOnly, (req, res) => {
     const busboy = new Busboy({headers: req.headers});
     const imageProcessingDone = new Promise((resolve, reject) => {
         busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
@@ -51,8 +71,8 @@ app.post('/upload', (req, res) => {
               .on('finish', resolve);
     });
     Promise.all([
-        imageProcessingDone.then((x) => { console.log('gm: done'); return x; }),
-        busboyDone.then(() => { console.log('bb: done') })
+        imageProcessingDone,
+        busboyDone
     ])
     .then((xs) => registerFile(xs[0]))
     .then(

@@ -19,7 +19,8 @@ module.exports = function (shipit) {
             shallowClone: true,
             shared: {
                 overwrite: true,
-                dirs: ['node_modules', 'public', 'data']
+                dirs: ['node_modules', 'public', 'data'],
+                files: ['server/config.js']
             }
         },
         production: {
