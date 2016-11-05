@@ -48,6 +48,5 @@ module.exports = function (shipit) {
         shipit.remote(`cd ${shipit.currentPath} && npm i`));
 
     shipit.blTask('startServer', () =>
-        //shipit.remote(`cd ${shipit.currentPath} && NODE_ENV=production pm2 startOrRestart ${shipit.currentPath}/deploy/pm2.json`));
-          shipit.remote(`cd ${shipit.currentPath} && pwd`));
+        shipit.remote(`cd ${shipit.currentPath} && NODE_ENV=production pm2 startOrRestart ${shipit.currentPath}/deploy/pm2.json`));
 };
