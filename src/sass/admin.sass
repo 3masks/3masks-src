@@ -1,0 +1,50 @@
+.admin-bids
+    padding: 20px
+
+.admin-bid
+    display: flex
+    background: rgba(white, .1)
+    border: 1px solid rgba(white, .2)
+    &:hover
+        background: rgba(black, .1)
+    &__field
+        width: 120px
+        &--program
+            width: 200px
+
+.admin-photos
+    &:after
+        content: ''
+        display: table
+        clear: both
+    &__item
+        position: relative
+        float: left
+        background: rgba($stripe-color, .9) center center no-repeat
+        background-size: contain
+
+        width: calc(50% - 20px)
+        @media (min-width: 768px)
+            width: calc(25% - 20px)
+        @media (min-width: 1440px)
+            width: calc(20% - 20px)
+        margin: 10px
+        &:before
+            content: ''
+            display: block
+            padding-top: percentage(3/4)
+
+        &-delete
+            display: none
+            position: absolute
+            right: 15px
+            top: 15px
+            width: 20px
+            height: 20px
+            background: rgba(white, .3)
+            svg
+                position: absolute
+                left: 10%
+                top: 10%
+                width: 80%
+                height: 80%

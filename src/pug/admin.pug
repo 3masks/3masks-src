@@ -1,28 +1,32 @@
 extends layout
 
 block main
-    .bids
-        .bids__item
-            .bid
-                .bid__field.bid__field--created Дата  
-                .bid__field.bid__field--name Имя
-                .bid__field.bid__field--age Возраст
-                .bid__field.bid__field--phone Телефон
-                .bid__field.bid__field--program Программа
+    .admin-bids
+        .admin-bids__item
+            .admin-bid
+                .admin-bid__field.admin-bid__field--created Дата  
+                .admin-bid__field.admin-bid__field--name Имя
+                .admin-bid__field.admin-bid__field--age Возраст
+                .admin-bid__field.admin-bid__field--phone Телефон
+                .admin-bid__field.admin-bid__field--program Программа
         each bid in bids
-            .bids__item
-                .bid
+            .admin-bids__item
+                .admin-bid
                     - var date = new Date(bid.created);
                     - var timeStr = [date.getHours(), date.getMinutes()].join(':')
                     - var dateStr = [date.getFullYear(), date.getDate(), (date.getMonth() + 1)].join('.')
-                    .bid__field.bid__field--created= timeStr + ' ' + dateStr  
-                    .bid__field.bid__field--name=bid.name
-                    .bid__field.bid__field--age=bid.age
-                    .bid__field.bid__field--phone=bid.phone
-                    .bid__field.bid__field--program=bid.program
-    .files
+                    .admin-bid__field.admin-bid__field--created= timeStr + ' ' + dateStr  
+                    .admin-bid__field.admin-bid__field--name=bid.name
+                    .admin-bid__field.admin-bid__field--age=bid.age
+                    .admin-bid__field.admin-bid__field--phone=bid.phone
+                    .admin-bid__field.admin-bid__field--program=bid.program
+    .admin-photos
         form(action="/upload" method="POST" enctype="multipart/form-data")
             input(type="file" name="file")
-            button.files__button(type="submit") Загрузить
+            button.button.admin-photos__button(type="submit") Загрузить
         each file in files
-            img.files__item(src='/p/i' + file.small)
+            .admin-photos__item(style=`background-image: url(/p/i${file.small})`)
+                .admin-photos__item-delete.cross
+                    svg
+                        line(x1=0 y1=0 x2='100%' y2='100%')
+                        line(x1=0 y1='100%' x2='100%' y2=0)
