@@ -5,4 +5,5 @@ require('./pages/campaign');
 require('./pages/contacts');
 require('./pages/price');
 
-require('./form.js');
+require('./form');
+require('./video');
