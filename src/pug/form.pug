@@ -1,8 +1,6 @@
+include cross
 .form
-    .form__close.cross
-        svg
-            line(x1=0 y1=0 x2='100%' y2='100%')
-            line(x1=0 y1='100%' x2='100%' y2=0)
+    +cross('form__close')
 
     h2.form__title Отправить заявку
     form

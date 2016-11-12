@@ -1,0 +1,33 @@
+.banner
+    position: fixed
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    &__overlay, &__image
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0    
+
+    &__overlay
+        background: rgba(black, .5)
+
+    &__image
+        background: url(~images/campaign.jpg) center center no-repeat
+        margin: auto
+        width: 200px
+        height: 397px
+    
+    &__close
+        position: absolute
+        bottom: 50%
+        left: 50%
+        margin-bottom: 205px
+        margin-left: 110px
+        width: 20px
+        height: 20px
+
+    &--closed
+        display: none

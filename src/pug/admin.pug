@@ -26,7 +26,4 @@ block main
             button.button.admin-photos__button(type="submit") Загрузить
         each file in files
             .admin-photos__item(style=`background-image: url(/p/i${file.small})`)
-                .admin-photos__item-delete.cross
-                    svg
-                        line(x1=0 y1=0 x2='100%' y2='100%')
-                        line(x1=0 y1='100%' x2='100%' y2=0)
+            +cross('admin-photos__item-delete')

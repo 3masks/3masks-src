@@ -7,3 +7,4 @@ require('./pages/price');
 
 require('./form');
 require('./video');
+require('./banner');

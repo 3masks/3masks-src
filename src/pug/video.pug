@@ -8,7 +8,4 @@ block main
                 each video in videos
                     .videos__item
                         .video!=video
-                        .videos__item-close.cross.cross--white
-                            svg
-                                line(x1=0 y1=0 x2='100%' y2='100%')
-                                line(x1=0 y1='100%' x2='100%' y2=0)
+                        +cross('videos__item-close cross--white')
