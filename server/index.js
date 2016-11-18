@@ -5,8 +5,10 @@ const path = require('path');
 const Busboy = require('busboy');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const pug = require('pug');
 
 const processImage = require('./util/images');
+const {sendMail} = require('./util/mail');
 const {saveBid, getBids, registerFile, getFiles} = require('./util/data');
 const {forLoggedInOnly, logIn} = require('./auth');
 const {SESSION_SECRET} = require('./config'); 
@@ -32,8 +34,15 @@ app.use(session({
     saveUninitialized: true
 }));
 
+const templateFileName = path.join(__dirname, '..', 'src', 'pug', 'newBid.pug');
+const newBidTemplate = pug.compile(fs.readFileSync(templateFileName, 'utf8'));
+
 app.post('/bid', (req, res) => {
-    saveBid(req.body).then(
+    Promise.all([
+        saveBid(req.body),
+        sendMail(newBidTemplate(req.body))
+    ])
+    .then(
         () => { res.send('ok'); },
         () => { res.send('fail'); }
     );
